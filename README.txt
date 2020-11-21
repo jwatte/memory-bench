@@ -11,27 +11,21 @@ Running:
 
 Example invocation (on Amazon c5n.metal instance):
 
-./memory-bench
-Generating 4294967296 bytes
-Reading took 175.104 seconds
-Begin iteration 1
-read/process/write 4096 MB took 0.758713 seconds
-Begin iteration 2
-read/process/write 4096 MB took 0.758398 seconds
-Begin iteration 3
-read/process/write 4096 MB took 0.758777 seconds
-Begin iteration 4
-read/process/write 4096 MB took 0.758281 seconds
-Begin iteration 5
-read/process/write 4096 MB took 0.758218 seconds
-Begin iteration 6
-read/process/write 4096 MB took 0.758243 seconds
-Begin iteration 7
-read/process/write 4096 MB took 0.758347 seconds
-Begin iteration 8
-read/process/write 4096 MB took 0.758029 seconds
-Begin iteration 9
-read/process/write 4096 MB took 0.758428 seconds
-Begin iteration 10
-read/process/write 4096 MB took 0.758353 seconds
+    ./memory-bench
+
+To run 10 of them in parallel (to measure multi-core performance):
+
+    for i in 0 1 2 3 4 5 6 7 8 9; do ./memory-bench & done
+
+Measurement on single core on Amazon EC2 c5n instance:
+
+    25500: read/process/write 4096 MB took 0.74152 seconds
+
+Per-core: 5 GB/s
+
+Measurement when running 16 of them in parallel:
+
+    58608: read/process/write 4096 MB took 1.14072 seconds
+
+Overall: 56 GB/s
 
